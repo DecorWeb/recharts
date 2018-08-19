@@ -66,6 +66,7 @@ class Pie extends Component {
     isAnimationActive: PropTypes.bool,
     animationBegin: PropTypes.number,
     animationDuration: PropTypes.number,
+    renderKey: PropTypes.string,
     animationEasing: PropTypes.oneOf([
       'ease',
       'ease-in',
@@ -229,7 +230,7 @@ class Pie extends Component {
   componentWillReceiveProps(nextProps) {
     const { animationId, sectors } = this.props;
 
-    if (nextProps.isAnimationActive !== this.props.isAnimationActive) {
+    if (nextProps.isAnimationActive !== this.props.isAnimationActive || this.props.renderKey !== nextProps.renderKey) {
       this.cachePrevData([]);
     } else if (nextProps.animationId !== animationId) {
       this.cachePrevData(sectors);
